@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f2f4f7;
+  padding: 0 120px;
+  border-bottom: 4px solid #fff;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+  background-color: #f2f4f7;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+  transition: color 300ms ease-in-out;
+  padding: 24px 0;
+}
+
+.isActive {
+  color: #0b44cd;
+}
+
+.logo {
+  width: 102px;
+  padding: 24px 0;
+}

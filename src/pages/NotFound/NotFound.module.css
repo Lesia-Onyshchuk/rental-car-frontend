@@ -1,0 +1,17 @@
+.notFound {
+  background-image: url("../../assets//home.jpg");
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  /* padding: 436px 0 60px; */
+  padding-bottom: 192px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  color: #fff;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1.2;
+}
