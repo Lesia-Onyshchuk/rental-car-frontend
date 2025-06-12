@@ -1,0 +1,164 @@
+.carBox {
+  padding: 80px 120px;
+  display: flex;
+  gap: 72px;
+}
+
+.firstBox {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.secondBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  border-radius: 19px;
+  width: 640px;
+  height: 512px;
+  /* object-fit: cover; */
+}
+
+.formBox {
+  border: 1px solid #dadde1;
+  border-radius: 10px;
+  padding: 32px;
+  width: 640px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+  margin-bottom: 8px;
+}
+
+.formText {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #8d929a;
+  margin-bottom: 24px;
+}
+
+.field {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+  padding: 14px 20px;
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 16px;
+}
+
+.field::placeholder {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #8d929a;
+}
+
+.error {
+  color: #ff0000;
+  font-size: 12px;
+  line-height: 1.25;
+  margin-top: 0;
+}
+
+.save {
+  font-family: "Manrope", sans-serif;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px 58px;
+  /* padding-top: 12px; */
+  /* padding-bottom: 12px; */
+  display: flex;
+  border: none;
+  max-width: 156px;
+  justify-content: center;
+  background-color: #3470ff;
+  margin-top: 8px;
+  transition: background-color 300ms ease-in-out;
+}
+
+.save:focus,
+.save:hover {
+  background-color: #0b44cd;
+}
+
+.titleBox {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  text-align: center;
+  color: #101828;
+}
+
+.carId {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #8d929a;
+}
+
+.address {
+  display: flex;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  color: #3470ff;
+  margin-bottom: 32px;
+}
+
+.info {
+  margin-bottom: 68px;
+}
+
+.carDescrBox {
+  margin-bottom: 110px;
+  color: #101828;
+}
+
+.carDescrTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.carDescrList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
