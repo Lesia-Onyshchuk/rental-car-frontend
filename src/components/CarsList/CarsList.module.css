@@ -1,3 +1,10 @@
+.listBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .list {
   padding: 0 120px;
   display: flex;
@@ -8,4 +15,25 @@
 
 .liItem {
   width: calc((100% - 3 * 32px) / 4);
+}
+
+.loadMore {
+  margin: 80px 0 124px;
+  border: 1px solid #3470ff;
+  border-radius: 12px;
+  padding: 12px 0;
+  background-color: transparent;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+  width: 156px;
+  text-align: center;
+  transition: border 300ms ease-in-out;
+}
+
+.loadMore:focus,
+.loadMore:hover {
+  border: 1px solid #0b44cd;
 }
