@@ -3,6 +3,7 @@ import { selectCars } from "../../redux/cars/selectors.js";
 import { CarItem } from "../CarItem/CarItem.jsx";
 import { useEffect } from "react";
 import { fetchCars } from "../../redux/cars/operations.js";
+import css from "./CarsList.module.css";
 
 export const CarsList = () => {
   const dispatch = useDispatch();
@@ -16,10 +17,10 @@ export const CarsList = () => {
   console.log("data", data);
 
   return (
-    <ul>
+    <ul className={css.list}>
       {data.map((item) => {
         return (
-          <li key={item.id}>
+          <li key={item.id} className={css.liItem}>
             <CarItem data={item} />
           </li>
         );

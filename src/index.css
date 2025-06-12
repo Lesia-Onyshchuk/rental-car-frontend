@@ -32,3 +32,9 @@ ul {
   padding: 0 120px;
   width: 1440px;
 } */
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
