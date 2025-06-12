@@ -3,6 +3,7 @@ import { NotFound } from "./pages/NotFound/NotFound.jsx";
 import { Home } from "./pages/Home/Home.jsx";
 import { Header } from "./components/Header/Header.jsx";
 import { Catalog } from "./pages/Catalog/Catalog.jsx";
+import { Car } from "./pages/Car/Car.jsx";
 
 export const App = () => {
   return (
@@ -11,7 +12,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
-        {/* <Route path="/catalog/:id" element={<CarItem />} /> */}
+        <Route path="/catalog/:id" element={<Car />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

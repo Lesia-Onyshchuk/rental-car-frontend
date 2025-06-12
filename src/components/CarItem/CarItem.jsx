@@ -43,7 +43,7 @@ export const CarItem = ({ data }) => {
       {/* <button type="button" className={css.readMore}>
         Read more
       </button> */}
-      <Link to="/catalog/:id" className={css.readMore}>
+      <Link to={`/catalog/${data.id}`} className={css.readMore}>
         Read more
       </Link>
     </div>
