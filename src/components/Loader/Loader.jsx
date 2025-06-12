@@ -1,13 +1,5 @@
-// import { Blocks } from "react-loader-spinner";
+import { PuffLoader } from "react-spinners";
 
-// export const Loader = () => {
-//   <Blocks
-//     height="80"
-//     width="80"
-//     color="#4fa94d"
-//     ariaLabel="blocks-loading"
-//     wrapperStyle={{}}
-//     wrapperClass="blocks-wrapper"
-//     visible={true}
-//   />;
-// };
+export const Loader = () => {
+  <PuffLoader color="#3470ff" />;
+};
