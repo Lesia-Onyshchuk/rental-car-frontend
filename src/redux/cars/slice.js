@@ -1,7 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchCarById, fetchCars } from "./operations";
 
-const initialState = { items: [], car: null, loading: false, error: null };
+const initialState = {
+  items: [],
+  car: null,
+  loading: false,
+  error: null,
+  totalCars: "",
+  page: "",
+  totalPages: "",
+};
 
 const slice = createSlice({
   name: "cars",
