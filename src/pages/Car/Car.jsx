@@ -18,7 +18,7 @@ export const Car = () => {
     dispatch(fetchCarById(id));
   }, [dispatch, id]);
 
-  if (!car) return <Loader />;
+  if (!car) return <p>Loading...</p>;
 
   //   const carArr = car.img.split("/");
   //   const lastElem = carArr.length - 1;
