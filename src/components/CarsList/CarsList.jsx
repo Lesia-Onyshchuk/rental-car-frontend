@@ -17,14 +17,19 @@ export const CarsList = () => {
   console.log("data", data);
 
   return (
-    <ul className={css.list}>
-      {data.map((item) => {
-        return (
-          <li key={item.id} className={css.liItem}>
-            <CarItem data={item} />
-          </li>
-        );
-      })}
-    </ul>
+    <div className={css.listBox}>
+      <ul className={css.list}>
+        {data.map((item) => {
+          return (
+            <li key={item.id} className={css.liItem}>
+              <CarItem data={item} />
+            </li>
+          );
+        })}
+      </ul>
+      <button type="button" className={css.loadMore}>
+        Load more
+      </button>
+    </div>
   );
 };
