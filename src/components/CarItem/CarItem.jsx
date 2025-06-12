@@ -40,9 +40,6 @@ export const CarItem = ({ data }) => {
           {Math.round(Number(data.mileage) * 1.60934)} km
         </li>
       </ul>
-      {/* <button type="button" className={css.readMore}>
-        Read more
-      </button> */}
       <Link to={`/catalog/${data.id}`} className={css.readMore}>
         Read more
       </Link>
