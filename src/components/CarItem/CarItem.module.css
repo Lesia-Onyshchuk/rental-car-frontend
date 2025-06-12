@@ -1,0 +1,101 @@
+.boxItem {
+  padding: 0;
+  position: relative;
+}
+
+.carImg {
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+
+.boxTitle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.carTitle {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+}
+
+.titleSpan {
+  color: #3470ff;
+}
+
+.price {
+  padding-right: 11px;
+}
+
+.carDescr .carLi:first-child {
+  padding-left: 0;
+}
+
+.carDescr {
+  display: flex;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8d929a;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 4px;
+  /* row-gap: 4px; */
+  /* width: 276px; */
+}
+
+.carLi {
+  /* width: calc((100% - 2 * 0) / 3); */
+  padding: 0 6px;
+  border-right: 1px solid #8d929a;
+}
+
+.readMore {
+  font-family: "Manrope", sans-serif;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px 97px;
+  /* padding-top: 12px; */
+  /* padding-bottom: 12px; */
+  display: flex;
+  border: none;
+  max-width: 276px;
+  justify-content: center;
+  background-color: #3470ff;
+  margin-top: 28px;
+  transition: background-color 300ms ease-in-out;
+}
+
+.readMore:focus,
+.readMore:hover {
+  background-color: #0b44cd;
+}
+
+.selected {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectIcon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 16px;
+  stroke: #ffffff;
+  fill: transparent;
+}
+
+.selectIcon:hover,
+.selectIcon:focus {
+  fill: #3470ff;
+  stroke: #3470ff;
+}
