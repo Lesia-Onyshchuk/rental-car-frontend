@@ -3,10 +3,10 @@ import { NotFound } from "./pages/NotFound/NotFound.jsx";
 import { Home } from "./pages/Home/Home.jsx";
 import { Header } from "./components/Header/Header.jsx";
 import { Catalog } from "./pages/Catalog/Catalog.jsx";
-import { Car } from "./pages/Car/Car.jsx";
 import { Loader } from "./components/Loader/Loader.jsx";
 import { useSelector } from "react-redux";
 import { selectLoading } from "./redux/cars/selectors.js";
+import { Car } from "./pages/Car/Car.jsx";
 
 export const App = () => {
   const loading = useSelector(selectLoading);

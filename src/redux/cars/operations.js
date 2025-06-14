@@ -24,6 +24,7 @@ export const fetchCarById = createAsyncThunk(
     try {
       thunkAPI.dispatch(setLoading(true));
       const { data } = await api.get(`/cars/${id}`);
+      console.log("fetchCarById response", data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
