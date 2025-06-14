@@ -1,9 +1,14 @@
+.container {
+  background-color: #f2f4f7;
+  border-bottom: 4px solid #fff;
+  /* width: 100vw; */
+}
+
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: #f2f4f7;
+  width: 1440px;
   padding: 0 120px;
-  border-bottom: 4px solid #fff;
 }
 
 .nav {
@@ -20,6 +25,10 @@
   color: #101828;
   transition: color 300ms ease-in-out;
   padding: 24px 0;
+}
+
+.link:hover {
+  color: #0b44cd;
 }
 
 .isActive {

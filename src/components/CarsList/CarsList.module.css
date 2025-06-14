@@ -6,7 +6,7 @@
 }
 
 .list {
-  padding: 0 120px;
+  /* padding: 0 120px; */
   display: flex;
   flex-wrap: wrap;
   column-gap: 32px;
@@ -18,7 +18,7 @@
 }
 
 .loadMore {
-  margin: 80px 0 124px;
+  margin-top: 80px;
   border: 1px solid #3470ff;
   border-radius: 12px;
   padding: 12px 0;

@@ -9,18 +9,20 @@ const activeClass = ({ isActive }) => {
 
 export const Header = () => {
   return (
-    <div className={css.header}>
-      <NavLink to="/">
-        <img src={logo} alt="Logo RentalCar" className={css.logo} />
-      </NavLink>
-      <nav className={css.nav}>
-        <NavLink to="/" className={activeClass}>
-          Home
+    <div className={css.container}>
+      <div className={css.header}>
+        <NavLink to="/">
+          <img src={logo} alt="Logo RentalCar" className={css.logo} />
         </NavLink>
-        <NavLink to="/catalog" className={activeClass}>
-          Catalog
-        </NavLink>
-      </nav>
+        <nav className={css.nav}>
+          <NavLink to="/" className={activeClass}>
+            Home
+          </NavLink>
+          <NavLink to="/catalog" className={activeClass}>
+            Catalog
+          </NavLink>
+        </nav>
+      </div>
     </div>
   );
 };

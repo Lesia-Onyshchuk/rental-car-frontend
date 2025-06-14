@@ -7,6 +7,7 @@ import { fetchCars } from "../../redux/cars/operations.js";
 import { selectCars } from "../../redux/cars/selectors.js";
 import { setFilters } from "../../redux/filters/slice.js";
 import { clearCars } from "../../redux/cars/slice.js";
+import css from "./Filters.module.css";
 
 export const Filters = () => {
   const [selectedPrice, setSelectedPrice] = useState(0);
@@ -79,8 +80,12 @@ export const Filters = () => {
   console.log("brands", brands);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <select value={rentFilters.brand} onChange={brandChange}>
+    <form onSubmit={handleSubmit} className={css.form}>
+      <select
+        value={rentFilters.brand}
+        onChange={brandChange}
+        className={css.select}
+      >
         <option value="" disabled hidden>
           Choose a brand
         </option>
@@ -93,7 +98,11 @@ export const Filters = () => {
         })}
       </select>
 
-      <select value={selectedPrice} onChange={priceChange}>
+      <select
+        value={selectedPrice}
+        onChange={priceChange}
+        className={css.select}
+      >
         {selectedPrice ? (
           <option value={selectedPrice}>To ${selectedPrice}</option>
         ) : (
@@ -115,15 +124,19 @@ export const Filters = () => {
         placeholder="From"
         value={rentFilters.minMileage}
         onChange={fromChange}
+        className={css.inputMin}
       />
       <input
         type="string"
         placeholder="To"
         value={rentFilters.maxMileage}
         onChange={toChange}
+        className={css.inputMax}
       />
 
-      <button type="submit">Search</button>
+      <button type="submit" className={css.searchBtn}>
+        Search
+      </button>
     </form>
   );
 };

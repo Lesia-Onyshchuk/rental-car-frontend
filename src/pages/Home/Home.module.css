@@ -11,6 +11,8 @@
   align-items: center;
   justify-content: flex-end;
   color: #fff;
+  width: 100vw;
+  height: 100vh;
 }
 
 .title {
