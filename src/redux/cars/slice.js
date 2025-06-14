@@ -14,6 +14,13 @@ const initialState = {
 const slice = createSlice({
   name: "cars",
   initialState,
+  reducers: {
+    clearCars(state) {
+      state.items = [];
+      state.page = 1;
+      state.totalPages = 1;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCars.pending, (state, action) => {
@@ -46,4 +53,5 @@ const slice = createSlice({
   },
 });
 
+export const { clearCars } = slice.actions;
 export const carsReducer = slice.reducer;

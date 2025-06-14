@@ -6,6 +6,7 @@ import { fetchBrands } from "../../redux/filters/operations.js";
 import { fetchCars } from "../../redux/cars/operations.js";
 import { selectCars } from "../../redux/cars/selectors.js";
 import { setFilters } from "../../redux/filters/slice.js";
+import { clearCars } from "../../redux/cars/slice.js";
 
 export const Filters = () => {
   const [selectedPrice, setSelectedPrice] = useState(0);
@@ -53,15 +54,16 @@ export const Filters = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(clearCars());
     dispatch(setFilters(rentFilters));
     dispatch(fetchCars({ page: 1, filters: rentFilters }));
-    setRentFilters({
-      brand: "",
-      rentalPrice: "",
-      minMileage: "",
-      maxMileage: "",
-    });
-    setSelectedPrice(0);
+    // setRentFilters({
+    //   brand: "",
+    //   rentalPrice: "",
+    //   minMileage: "",
+    //   maxMileage: "",
+    // });
+    // setSelectedPrice(0);
   };
 
   const price = cars
