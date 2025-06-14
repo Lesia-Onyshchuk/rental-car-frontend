@@ -3,9 +3,10 @@ import { api } from "../api.js";
 
 export const fetchCars = createAsyncThunk(
   "cars/fetchAll",
-  async (page = 1, thunkAPI) => {
+  async ({ page = 1, filters = {} }, thunkAPI) => {
     try {
-      const { data } = await api.get(`/cars?page=${page}`);
+      const params = { page, ...filters };
+      const { data } = await api.get("/cars", { params });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

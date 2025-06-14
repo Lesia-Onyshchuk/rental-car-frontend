@@ -1,13 +1,87 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectBrands } from "../../redux/filters/selectors.js";
 import { nanoid } from "nanoid";
+import { useEffect, useState } from "react";
+import { fetchBrands } from "../../redux/filters/operations.js";
+import { fetchCars } from "../../redux/cars/operations.js";
+import { selectCars } from "../../redux/cars/selectors.js";
+import { setFilters } from "../../redux/filters/slice.js";
 
 export const Filters = () => {
+  const [selectedPrice, setSelectedPrice] = useState(0);
+  const [rentFilters, setRentFilters] = useState({
+    brand: "",
+    rentalPrice: "",
+    minMileage: "",
+    maxMileage: "",
+  });
+
   const brands = useSelector(selectBrands);
+  const cars = useSelector(selectCars);
+  // const filters = useSelector(selectFilters);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchBrands());
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(fetchCars());
+  // }, [dispatch]);
+
+  // const handleSelectedPrice = (event) => {
+  //   dispatch(setPrice(event.target.value));
+  //   setSelectedPrice(event.target.value);
+  // };
+
+  const brandChange = (event) => {
+    setRentFilters((prev) => ({ ...prev, brand: event.target?.value }));
+  };
+
+  const priceChange = (event) => {
+    setRentFilters((prev) => ({ ...prev, rentalPrice: event.target?.value }));
+    setSelectedPrice(event.target.value);
+  };
+
+  const fromChange = (event) => {
+    setRentFilters((prev) => ({ ...prev, minMileage: event.target?.value }));
+  };
+
+  const toChange = (event) => {
+    setRentFilters((prev) => ({ ...prev, maxMileage: event.target?.value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(setFilters(rentFilters));
+    dispatch(fetchCars({ page: 1, filters: rentFilters }));
+    setRentFilters({
+      brand: "",
+      rentalPrice: "",
+      minMileage: "",
+      maxMileage: "",
+    });
+    setSelectedPrice(0);
+  };
+
+  const price = cars
+    .map((car) => {
+      return car.rentalPrice;
+    })
+    .filter((price, index, arr) => {
+      return arr.indexOf(price) === index;
+    })
+    .toSorted((a, b) => a - b);
+
+  console.log("price", price);
   console.log("brands", brands);
+
   return (
-    <form>
-      <select placeholder="Choose a brand">
+    <form onSubmit={handleSubmit}>
+      <select value={rentFilters.brand} onChange={brandChange}>
+        <option value="" disabled hidden>
+          Choose a brand
+        </option>
         {brands.map((brand) => {
           return (
             <option key={nanoid()} value={brand}>
@@ -17,20 +91,37 @@ export const Filters = () => {
         })}
       </select>
 
-      <select>
-        <option value="">Choose a price</option>
-        <option value="30">30</option>
-        <option value="40">40</option>
-        <option value="50">50</option>
-        <option value="60">60</option>
-        <option value="70">70</option>
-        <option value="80">80</option>
+      <select value={selectedPrice} onChange={priceChange}>
+        {selectedPrice ? (
+          <option value={selectedPrice}>To ${selectedPrice}</option>
+        ) : (
+          <option value="" hidden>
+            Choose a price
+          </option>
+        )}
+        {price.map((item) => {
+          return (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          );
+        })}
       </select>
 
-      <input type="number" placeholder="From" />
-      <input type="number" placeholder="To" />
+      <input
+        type="string"
+        placeholder="From"
+        value={rentFilters.minMileage}
+        onChange={fromChange}
+      />
+      <input
+        type="string"
+        placeholder="To"
+        value={rentFilters.maxMileage}
+        onChange={toChange}
+      />
 
-      <button type="button">Search</button>
+      <button type="submit">Search</button>
     </form>
   );
 };

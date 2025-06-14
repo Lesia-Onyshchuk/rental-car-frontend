@@ -40,9 +40,7 @@ export const CarItem = ({ data }) => {
       </ul>
       <ul className={css.carDescr}>
         <li className={css.carLi}>{data.type}</li>
-        <li className={css.carLi}>
-          {Math.round(Number(data.mileage) * 1.60934)} km
-        </li>
+        <li className={css.carLi}>{data.mileage} km</li>
       </ul>
       <Link to={`/catalog/${data.id}`} className={css.readMore}>
         Read more
