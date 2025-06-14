@@ -7,11 +7,12 @@ import { Loader } from "./components/Loader/Loader.jsx";
 import { useSelector } from "react-redux";
 import { selectLoading } from "./redux/cars/selectors.js";
 import { Car } from "./pages/Car/Car.jsx";
+import "./App.css";
 
 export const App = () => {
   const loading = useSelector(selectLoading);
   return (
-    <div>
+    <div className="appBox">
       {loading && <Loader />}
       <Header />
       <Routes>
