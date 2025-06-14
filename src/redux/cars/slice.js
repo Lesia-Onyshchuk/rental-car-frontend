@@ -20,6 +20,9 @@ const slice = createSlice({
       state.page = 1;
       state.totalPages = 1;
     },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -53,5 +56,5 @@ const slice = createSlice({
   },
 });
 
-export const { clearCars } = slice.actions;
+export const { clearCars, setLoading } = slice.actions;
 export const carsReducer = slice.reducer;

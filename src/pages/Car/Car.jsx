@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCarById } from "../../redux/cars/operations";
 import { selectCurrentCar } from "../../redux/cars/selectors";
 import { useParams } from "react-router-dom";
-import { Loader } from "../../components/Loader/Loader.jsx";
+// import { Loader } from "../../components/Loader/Loader.jsx";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { nanoid } from "nanoid";
 import * as Yup from "yup";
@@ -35,8 +35,6 @@ export const Car = () => {
   useEffect(() => {
     dispatch(fetchCarById(id));
   }, [dispatch, id]);
-
-  if (!car) return <Loader />;
 
   return (
     <div className={css.carBox}>
