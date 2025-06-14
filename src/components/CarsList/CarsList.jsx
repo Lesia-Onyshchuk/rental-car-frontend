@@ -5,10 +5,11 @@ import {
   selectTotalPages,
 } from "../../redux/cars/selectors.js";
 import { CarItem } from "../CarItem/CarItem.jsx";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { fetchCars } from "../../redux/cars/operations.js";
 import css from "./CarsList.module.css";
 import { nanoid } from "nanoid";
+// import { selectFilteredCars } from "../../redux/filters/selectors.js";
 
 export const CarsList = () => {
   const dispatch = useDispatch();
@@ -19,11 +20,11 @@ export const CarsList = () => {
   const hasNextPage = totalPages > page ? true : false;
 
   useEffect(() => {
-    dispatch(fetchCars(1));
+    dispatch(fetchCars({ page: 1 }));
   }, [dispatch]);
 
   const handleLoadMore = (nextPage) => {
-    dispatch(fetchCars(nextPage));
+    dispatch(fetchCars({ page: nextPage }));
   };
 
   return (
