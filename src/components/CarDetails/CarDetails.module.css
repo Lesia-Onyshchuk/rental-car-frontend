@@ -32,6 +32,8 @@
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: stretch;
+  width: 100%;
 }
 
 .formTitle {
@@ -59,10 +61,54 @@
   background-color: #f7f7f7;
   border-radius: 12px;
   border: none;
+  margin-bottom: 0;
+  outline: none;
+  /* min-width: 100%; */
+}
+
+.fieldDate {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+  padding: 14px 20px;
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 0;
+  outline: none;
   margin-bottom: 16px;
 }
 
+.fieldBox {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldTarea {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+  padding: 14px 20px;
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 16px;
+  outline: none;
+  resize: vertical;
+  height: 88px;
+}
+
 .field::placeholder {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #8d929a;
+}
+
+.fieldTarea::placeholder {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
@@ -89,6 +135,7 @@
   border: none;
   max-width: 156px;
   justify-content: center;
+  align-items: center;
   background-color: #3470ff;
   margin-top: 8px;
   transition: background-color 300ms ease-in-out;
@@ -176,4 +223,10 @@
 
 .listIcon {
   width: 16px;
+}
+
+.formikBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
