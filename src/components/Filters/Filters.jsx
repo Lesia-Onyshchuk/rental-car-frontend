@@ -30,12 +30,32 @@ export const Filters = () => {
     dispatch(fetchBrands());
   }, [dispatch]);
 
-  const fromChange = (event) => {
-    setRentFilters((prev) => ({ ...prev, minMileage: event.target?.value }));
+  const formatNumber = (value) => {
+    return value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  const toChange = (event) => {
-    setRentFilters((prev) => ({ ...prev, maxMileage: event.target?.value }));
+  const parseNumber = (value) => {
+    return value.replace(/,/g, "");
+  };
+
+  const fromChange = (e) => {
+    const raw = parseNumber(e.target.value);
+    if (/^\d*$/.test(raw)) {
+      setRentFilters((prev) => ({
+        ...prev,
+        minMileage: raw,
+      }));
+    }
+  };
+
+  const toChange = (e) => {
+    const raw = parseNumber(e.target.value);
+    if (/^\d*$/.test(raw)) {
+      setRentFilters((prev) => ({
+        ...prev,
+        maxMileage: raw,
+      }));
+    }
   };
 
   const price = cars
@@ -99,7 +119,7 @@ export const Filters = () => {
           </label>
           <input
             type="text"
-            value={rentFilters.minMileage}
+            value={formatNumber(rentFilters.minMileage)}
             onChange={fromChange}
             className={css.inputMin}
             id={minId}
@@ -109,7 +129,7 @@ export const Filters = () => {
           </label>
           <input
             type="text"
-            value={rentFilters.maxMileage}
+            value={formatNumber(rentFilters.maxMileage)}
             onChange={toChange}
             className={css.inputMax}
             id={maxId}

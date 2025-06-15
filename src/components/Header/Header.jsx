@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import css from "./Header.module.css";
 import clsx from "clsx";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/Logo.svg";
 
 const activeClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.isActive);

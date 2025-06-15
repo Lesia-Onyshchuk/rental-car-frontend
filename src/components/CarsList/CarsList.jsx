@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectCars,
+  selectLoading,
   selectPage,
   selectTotalPages,
 } from "../../redux/cars/selectors.js";
@@ -15,6 +16,8 @@ import { clearCars } from "../../redux/cars/slice.js";
 
 export const CarsList = () => {
   const dispatch = useDispatch();
+
+  const loading = useSelector(selectLoading);
 
   const data = useSelector(selectCars);
   const page = useSelector(selectPage);
@@ -46,10 +49,12 @@ export const CarsList = () => {
           })}
         </ul>
       ) : (
-        <p>
-          No cars are found for your request. Please change the filters and try
-          again.
-        </p>
+        !loading && (
+          <p className={css.noCars}>
+            No cars are found for your request. Please change the filters and
+            try again.
+          </p>
+        )
       )}
       {hasNextPage && (
         <button
