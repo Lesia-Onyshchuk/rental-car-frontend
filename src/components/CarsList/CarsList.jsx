@@ -10,8 +10,8 @@ import { fetchCars } from "../../redux/cars/operations.js";
 import css from "./CarsList.module.css";
 import { nanoid } from "nanoid";
 import { selectFilters } from "../../redux/filters/selectors.js";
-// import { Loader } from "../Loader/Loader.jsx";
-// import { selectFilteredCars } from "../../redux/filters/selectors.js";
+import { resetFilters } from "../../redux/filters/slice.js";
+import { clearCars } from "../../redux/cars/slice.js";
 
 export const CarsList = () => {
   const dispatch = useDispatch();
@@ -19,21 +19,22 @@ export const CarsList = () => {
   const data = useSelector(selectCars);
   const page = useSelector(selectPage);
   const totalPages = useSelector(selectTotalPages);
-  // const loading = useSelector(selectLoading);
   const hasNextPage = totalPages > page ? true : false;
   const filters = useSelector(selectFilters);
 
   useEffect(() => {
+    dispatch(resetFilters());
+    dispatch(clearCars());
     dispatch(fetchCars({ page: 1 }));
   }, [dispatch]);
 
   const handleLoadMore = (nextPage) => {
+    dispatch(resetFilters());
     dispatch(fetchCars({ page: nextPage, filters }));
   };
 
   return (
     <div className={css.listBox}>
-      {/* {loading && <Loader />} */}
       {data.length ? (
         <ul className={css.list}>
           {data.map((item) => {
