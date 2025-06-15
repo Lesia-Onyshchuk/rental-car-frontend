@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCarById } from "../../redux/cars/operations";
-import { selectCurrentCar } from "../../redux/cars/selectors.js";
+import { selectCurrentCar, selectError } from "../../redux/cars/selectors.js";
 import { useParams } from "react-router-dom";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { nanoid } from "nanoid";
@@ -58,6 +58,7 @@ export const CarDetails = () => {
   };
 
   const car = useSelector(selectCurrentCar);
+  const error = useSelector(selectError);
 
   const BookingSchema = Yup.object().shape({
     name: Yup.string()
@@ -72,6 +73,12 @@ export const CarDetails = () => {
   useEffect(() => {
     dispatch(fetchCarById(id));
   }, [dispatch, id]);
+
+  if (error) {
+    return (
+      <p className={css.errorCars}>Something went wrong. Try again later.</p>
+    );
+  }
 
   if (!car) {
     return <Loader />;
