@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectCars,
+  selectError,
   selectLoading,
   selectPage,
   selectTotalPages,
@@ -18,6 +19,7 @@ export const CarsList = () => {
   const dispatch = useDispatch();
 
   const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
 
   const data = useSelector(selectCars);
   const page = useSelector(selectPage);
@@ -35,6 +37,12 @@ export const CarsList = () => {
     dispatch(resetFilters());
     dispatch(fetchCars({ page: nextPage, filters }));
   };
+
+  if (error) {
+    return (
+      <p className={css.errorCars}>Something went wrong. Try again later.</p>
+    );
+  }
 
   return (
     <div className={css.listBox}>
