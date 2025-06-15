@@ -1,5 +1,7 @@
 import { CarDetails } from "../../components/CarDetails/CarDetails.jsx";
 
-export const Car = () => {
+const Car = () => {
   return <CarDetails />;
 };
+
+export default Car;

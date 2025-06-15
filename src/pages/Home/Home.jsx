@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import css from "./Home.module.css";
 
-export const Home = () => {
+const Home = () => {
   return (
     <div className={css.home}>
       <h1 className={css.title}>Find your perfect rental car</h1>
@@ -14,3 +14,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home;

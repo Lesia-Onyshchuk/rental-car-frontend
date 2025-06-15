@@ -44,7 +44,9 @@ export const CarItem = ({ data }) => {
       </ul>
       <ul className={css.carDescr}>
         <li className={css.carLiSec}>{data.type}</li>
-        <li className={css.carLiSec}>{data.mileage} km</li>
+        <li className={css.carLiSec}>
+          {new Intl.NumberFormat("uk-UA").format(data.mileage)} km
+        </li>
       </ul>
       <Link to={`/catalog/${data.id}`} className={css.readMore}>
         Read more
