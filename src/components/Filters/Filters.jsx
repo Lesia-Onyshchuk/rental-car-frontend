@@ -1,16 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectBrands } from "../../redux/filters/selectors.js";
-import { nanoid } from "nanoid";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { fetchBrands } from "../../redux/filters/operations.js";
 import { fetchCars } from "../../redux/cars/operations.js";
 import { selectCars } from "../../redux/cars/selectors.js";
 import { setFilters } from "../../redux/filters/slice.js";
 import { clearCars } from "../../redux/cars/slice.js";
 import css from "./Filters.module.css";
+import { CustomSelect } from "./CustomSelect/CustomSelect.jsx";
 
 export const Filters = () => {
-  const [selectedPrice, setSelectedPrice] = useState(0);
   const [rentFilters, setRentFilters] = useState({
     brand: "",
     rentalPrice: "",
@@ -20,30 +19,16 @@ export const Filters = () => {
 
   const brands = useSelector(selectBrands);
   const cars = useSelector(selectCars);
-  // const filters = useSelector(selectFilters);
   const dispatch = useDispatch();
+  const brandId = useId();
+  const priceId = useId();
+  const mileageId = useId();
+  const minId = useId();
+  const maxId = useId();
 
   useEffect(() => {
     dispatch(fetchBrands());
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(fetchCars());
-  // }, [dispatch]);
-
-  // const handleSelectedPrice = (event) => {
-  //   dispatch(setPrice(event.target.value));
-  //   setSelectedPrice(event.target.value);
-  // };
-
-  const brandChange = (event) => {
-    setRentFilters((prev) => ({ ...prev, brand: event.target?.value }));
-  };
-
-  const priceChange = (event) => {
-    setRentFilters((prev) => ({ ...prev, rentalPrice: event.target?.value }));
-    setSelectedPrice(event.target.value);
-  };
 
   const fromChange = (event) => {
     setRentFilters((prev) => ({ ...prev, minMileage: event.target?.value }));
@@ -51,20 +36,6 @@ export const Filters = () => {
 
   const toChange = (event) => {
     setRentFilters((prev) => ({ ...prev, maxMileage: event.target?.value }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(clearCars());
-    dispatch(setFilters(rentFilters));
-    dispatch(fetchCars({ page: 1, filters: rentFilters }));
-    // setRentFilters({
-    //   brand: "",
-    //   rentalPrice: "",
-    //   minMileage: "",
-    //   maxMileage: "",
-    // });
-    // setSelectedPrice(0);
   };
 
   const price = cars
@@ -79,61 +50,72 @@ export const Filters = () => {
   console.log("price", price);
   console.log("brands", brands);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(clearCars());
+    dispatch(setFilters(rentFilters));
+    dispatch(fetchCars({ page: 1, filters: rentFilters }));
+  };
+
   return (
     <form onSubmit={handleSubmit} className={css.form}>
-      <select
-        value={rentFilters.brand}
-        onChange={brandChange}
-        className={css.select}
-      >
-        <option value="" disabled hidden>
-          Choose a brand
-        </option>
-        {brands.map((brand) => {
-          return (
-            <option key={nanoid()} value={brand}>
-              {brand}
-            </option>
-          );
-        })}
-      </select>
-
-      <select
-        value={selectedPrice}
-        onChange={priceChange}
-        className={css.select}
-      >
-        {selectedPrice ? (
-          <option value={selectedPrice}>To ${selectedPrice}</option>
-        ) : (
-          <option value="" hidden>
-            Choose a price
-          </option>
-        )}
-        {price.map((item) => {
-          return (
-            <option key={item} value={item}>
-              {item}
-            </option>
-          );
-        })}
-      </select>
-
-      <input
-        type="string"
-        placeholder="From"
-        value={rentFilters.minMileage}
-        onChange={fromChange}
-        className={css.inputMin}
-      />
-      <input
-        type="string"
-        placeholder="To"
-        value={rentFilters.maxMileage}
-        onChange={toChange}
-        className={css.inputMax}
-      />
-
+      <div className={css.box}>
+        <label htmlFor={brandId} className={css.label}>
+          Car brand
+        </label>
+        <CustomSelect
+          options={brands}
+          onSelect={(value) =>
+            setRentFilters((prev) => ({ ...prev, brand: value }))
+          }
+          selected={rentFilters.brand}
+          placeholder="Choose a brand"
+          className={css.select}
+          id={brandId}
+        />
+      </div>
+      <div className={css.box}>
+        <label htmlFor={priceId} className={css.label}>
+          Price/ 1 hour
+        </label>
+        <CustomSelect
+          options={price}
+          onSelect={(value) =>
+            setRentFilters((prev) => ({ ...prev, rentalPrice: value }))
+          }
+          selected={rentFilters.rentalPrice}
+          placeholder="Choose a price"
+          className={css.select}
+          id={priceId}
+        />
+      </div>
+      <div className={css.box}>
+        <label htmlFor={mileageId} className={css.label}>
+          Car mileage / km
+        </label>
+        <div className={css.inputBox}>
+          <label htmlFor={minId} className={css.inputLabel}>
+            From
+          </label>
+          <input
+            type="text"
+            value={rentFilters.minMileage}
+            onChange={fromChange}
+            className={css.inputMin}
+            id={minId}
+          />
+          <label htmlFor={maxId} className={css.inputMaxLabel}>
+            To
+          </label>
+          <input
+            type="text"
+            value={rentFilters.maxMileage}
+            onChange={toChange}
+            className={css.inputMax}
+            id={maxId}
+          />
+        </div>
+      </div>
       <button type="submit" className={css.searchBtn}>
         Search
       </button>
