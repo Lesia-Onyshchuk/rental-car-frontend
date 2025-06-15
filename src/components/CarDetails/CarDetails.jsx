@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCarById } from "../../redux/cars/operations";
 import { selectCurrentCar } from "../../redux/cars/selectors.js";
@@ -14,14 +14,47 @@ import calendar from "../../assets/calendar.svg";
 import carIcon from "../../assets/car.svg";
 import fuel from "../../assets/fuel-pump.svg";
 import engine from "../../assets/gear.svg";
+import DatePicker, { registerLocale } from "react-datepicker";
+import "./BookingDateCalendar.css";
+import enGB from "date-fns/locale/en-GB";
+import "react-datepicker/dist/react-datepicker.css";
+import { Bounce, toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+registerLocale("enGB", enGB);
 
 export const CarDetails = () => {
+  const [startDate, setStartDate] = useState(null);
   const dispatch = useDispatch();
   const { id } = useParams();
-  const initialValues = { name: "", email: "", date: "", comment: "" };
+
+  const initialValues = {
+    name: "",
+    email: "",
+    date: "",
+    comment: "",
+  };
 
   const handleSubmit = (values, actions) => {
+    toast.success("Your booking has been submitted!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+
+    const formValuesToSave = { ...values };
+    if (startDate) {
+      formValuesToSave.date = startDate;
+    }
+    localStorage.setItem("carBookingForm", JSON.stringify(formValuesToSave));
     actions.resetForm();
+    setStartDate(null);
   };
 
   const car = useSelector(selectCurrentCar);
@@ -46,6 +79,7 @@ export const CarDetails = () => {
 
   return (
     <div className={css.carBox}>
+      <ToastContainer />
       <div className={css.firstBox}>
         <img src={car.img} alt={car.description} className={css.img} />
         <div className={css.formBox}>
@@ -86,12 +120,22 @@ export const CarDetails = () => {
                     className={css.error}
                   />
                 </div>
-                <Field
-                  type="date"
-                  name="date"
-                  placeholder="Booking date"
-                  className={css.fieldDate}
-                ></Field>
+                <div className={css.calendarWrapper}>
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    dateFormat="dd.MM.yyyy"
+                    placeholderText="Booking date"
+                    className="custom-datepicker"
+                    calendarClassName="custom-calendar"
+                    minDate={new Date()}
+                    showPopperArrow={false}
+                    locale="enGB"
+                    formatWeekDay={(nameOfDay) =>
+                      nameOfDay.toUpperCase().slice(0, 3)
+                    }
+                  />
+                </div>
                 <div className={css.fieldBox}>
                   <Field
                     as="textarea"

@@ -13,7 +13,6 @@
 }
 
 .liItem {
-  /* width: calc((100% - 3 * 32px) / 4); */
   width: 276px;
 }
 
