@@ -67,9 +67,6 @@ export const Filters = () => {
     })
     .toSorted((a, b) => a - b);
 
-  console.log("price", price);
-  console.log("brands", brands);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(clearCars());

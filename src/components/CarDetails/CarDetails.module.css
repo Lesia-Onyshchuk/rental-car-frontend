@@ -2,6 +2,7 @@
   padding: 80px 120px;
   display: flex;
   gap: 72px;
+  width: 1440px;
 }
 
 .firstBox {
@@ -19,7 +20,6 @@
   border-radius: 19px;
   width: 640px;
   height: 512px;
-  /* object-fit: cover; */
 }
 
 .formBox {
@@ -85,8 +85,6 @@
   color: #fff;
   border-radius: 12px;
   padding: 12px 58px;
-  /* padding-top: 12px; */
-  /* padding-bottom: 12px; */
   display: flex;
   border: none;
   max-width: 156px;
@@ -129,8 +127,11 @@
   font-size: 16px;
   line-height: 1.25;
   color: #101828;
-  gap: 16px;
   margin-bottom: 16px;
+}
+
+.addressLoc {
+  margin-right: 16px;
 }
 
 .price {
@@ -161,4 +162,18 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.locationIcon {
+  width: 16px;
+  margin-right: 7px;
+}
+
+.listLi {
+  display: flex;
+  gap: 8px;
+}
+
+.listIcon {
+  width: 16px;
 }
