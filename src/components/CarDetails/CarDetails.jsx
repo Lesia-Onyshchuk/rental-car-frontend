@@ -23,6 +23,7 @@ export const CarDetails = () => {
   const handleSubmit = (values, actions) => {
     actions.resetForm();
   };
+
   const car = useSelector(selectCurrentCar);
 
   const BookingSchema = Yup.object().shape({
@@ -57,41 +58,54 @@ export const CarDetails = () => {
             onSubmit={handleSubmit}
             validationSchema={BookingSchema}
           >
-            <Form className={css.form}>
-              <Field
-                type="text"
-                name="name"
-                placeholder="Name*"
-                className={css.field}
-              ></Field>
-              <ErrorMessage
-                name="name"
-                component="span"
-                className={css.error}
-              />
-              <Field
-                type="email"
-                name="email"
-                placeholder="Email*"
-                className={css.field}
-              ></Field>
-              <ErrorMessage
-                name="email"
-                component="span"
-                className={css.error}
-              />
-              <Field
-                type="date"
-                name="date"
-                placeholder="Booking date"
-                className={css.field}
-              ></Field>
-              <Field
-                as="textarea"
-                name="comment"
-                placeholder="Comment"
-                className={css.field}
-              ></Field>
+            <Form className={css.formikBox}>
+              <div className={css.form}>
+                <div className={css.fieldBox}>
+                  <Field
+                    type="text"
+                    name="name"
+                    placeholder="Name*"
+                    className={css.field}
+                  ></Field>
+                  <ErrorMessage
+                    name="name"
+                    component="span"
+                    className={css.error}
+                  />
+                </div>
+                <div className={css.fieldBox}>
+                  <Field
+                    type="email"
+                    name="email"
+                    placeholder="Email*"
+                    className={css.field}
+                  ></Field>
+                  <ErrorMessage
+                    name="email"
+                    component="span"
+                    className={css.error}
+                  />
+                </div>
+                <Field
+                  type="date"
+                  name="date"
+                  placeholder="Booking date"
+                  className={css.fieldDate}
+                ></Field>
+                <div className={css.fieldBox}>
+                  <Field
+                    as="textarea"
+                    name="comment"
+                    placeholder="Comment"
+                    className={css.fieldTarea}
+                  ></Field>
+                  <ErrorMessage
+                    name="comment"
+                    component="span"
+                    className={css.error}
+                  />
+                </div>
+              </div>
               <button type="submit" className={css.save}>
                 Send
               </button>
