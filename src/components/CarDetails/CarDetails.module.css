@@ -1,7 +1,6 @@
 .carBox {
   padding: 80px 120px;
   display: flex;
-  gap: 72px;
   width: 1440px;
 }
 
@@ -9,6 +8,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+  margin-right: 72px;
 }
 
 .secondBox {
@@ -63,21 +63,6 @@
   border: none;
   margin-bottom: 0;
   outline: none;
-  /* min-width: 100%; */
-}
-
-.fieldDate {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
-  color: #101828;
-  padding: 14px 20px;
-  background-color: #f7f7f7;
-  border-radius: 12px;
-  border: none;
-  margin-bottom: 0;
-  outline: none;
-  margin-bottom: 16px;
 }
 
 .fieldBox {
@@ -229,4 +214,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.calendarWrapper {
+  position: relative;
+  max-width: 308px;
 }

@@ -15,18 +15,6 @@ const slice = createSlice({
     setFilters(state, action) {
       state.filters = { ...state.filters, ...action.payload };
     },
-    //   setBrand: (state, action) => {
-    //     state.brand = action.payload;
-    //   },
-    //   setPrice: (state, action) => {
-    //     state.filters.price = action.payload;
-    //   },
-    //   setFromMileage: (state, action) => {
-    //     state.filters.fromMileage = action.payload;
-    //   },
-    //   setToMileage: (state, action) => {
-    //     state.filters.toMileage = action.payload;
-    //   },
     resetFilters: () => initialState,
   },
   extraReducers: (builder) => {

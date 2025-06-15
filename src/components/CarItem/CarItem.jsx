@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
 import css from "./CarItem.module.css";
-// import { RiHeartLine } from "react-icons/ri";
-// import like from "../../assets/like.svg";
 import heart from "../../assets/heart.svg";
 import heartBlue from "../../assets/heart-blue.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSelectedCars } from "../../redux/selected/selectors.js";
-// import { useEffect } from "react";
 import { removeSelected, setSelected } from "../../redux/selected/slice.js";
 
 export const CarItem = ({ data }) => {
