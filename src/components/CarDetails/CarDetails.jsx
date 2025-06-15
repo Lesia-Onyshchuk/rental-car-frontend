@@ -8,6 +8,12 @@ import { nanoid } from "nanoid";
 import * as Yup from "yup";
 import css from "./CarDetails.module.css";
 import { Loader } from "../Loader/Loader.jsx";
+import location from "../../assets/location.svg";
+import check from "../../assets/check-circle.svg";
+import calendar from "../../assets/calendar.svg";
+import carIcon from "../../assets/car.svg";
+import fuel from "../../assets/fuel-pump.svg";
+import engine from "../../assets/gear.svg";
 
 export const CarDetails = () => {
   const dispatch = useDispatch();
@@ -15,13 +21,9 @@ export const CarDetails = () => {
   const initialValues = { name: "", email: "", date: "", comment: "" };
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
     actions.resetForm();
   };
   const car = useSelector(selectCurrentCar);
-
-  console.log("id from params:", id);
-  console.log("car", car);
 
   const BookingSchema = Yup.object().shape({
     name: Yup.string()
@@ -107,7 +109,8 @@ export const CarDetails = () => {
           </p>
         </div>
         <div className={css.address}>
-          <p>
+          <img src={location} alt="" className={css.locationIcon} />
+          <p className={css.addressLoc}>
             {car.address.split(",")[1]}, {car.address.split(",")[2]}
           </p>
           <p>Mileage: {Math.round(Number(car.mileage) * 1.60934)} km</p>
@@ -121,17 +124,34 @@ export const CarDetails = () => {
           <h3 className={css.carDescrTitle}>Rental Conditions:</h3>
           <ul className={css.carDescrList}>
             {car.rentalConditions.map((item) => {
-              return <li key={nanoid()}>{item}</li>;
+              return (
+                <li key={nanoid()} className={css.listLi}>
+                  <img src={check} alt="" className={css.listIcon} />
+                  <p>{item}</p>
+                </li>
+              );
             })}
           </ul>
         </div>
         <div className={css.carDescrBox}>
           <h3 className={css.carDescrTitle}>Car Specifications:</h3>
           <ul className={css.carDescrList}>
-            <li>Year: {car.year}</li>
-            <li>Type: {car.type}</li>
-            <li>Fuel Consumption: {car.fuelConsumption}</li>
-            <li>Engine Size: {car.engineSize}</li>
+            <li className={css.listLi}>
+              <img src={calendar} alt="" className={css.listIcon} />
+              <p>Year: {car.year}</p>
+            </li>
+            <li className={css.listLi}>
+              <img src={carIcon} alt="" className={css.listIcon} />
+              <p>Type: {car.type}</p>Type: {car.type}
+            </li>
+            <li className={css.listLi}>
+              <img src={fuel} alt="" className={css.listIcon} />
+              <p>Fuel Consumption: {car.fuelConsumption}</p>
+            </li>
+            <li className={css.listLi}>
+              <img src={engine} alt="" className={css.listIcon} />
+              <p>Engine Size: {car.engineSize}</p>
+            </li>
           </ul>
         </div>
         <div className={css.carDescrBox}>
@@ -140,7 +160,12 @@ export const CarDetails = () => {
           </h3>
           <ul className={css.carDescrList}>
             {[...car.accessories, ...car.functionalities].map((item) => {
-              return <li key={nanoid()}>{item}</li>;
+              return (
+                <li key={nanoid()} className={css.listLi}>
+                  <img src={check} alt="" className={css.listIcon} />
+                  <p>{item}</p>
+                </li>
+              );
             })}
           </ul>
         </div>

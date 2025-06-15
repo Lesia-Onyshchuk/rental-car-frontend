@@ -37,7 +37,6 @@ const slice = createSlice({
       .addCase(fetchBrands.fulfilled, (state, action) => {
         state.loading = false;
         state.brands = action.payload;
-        console.log("data", state.brands);
       })
       .addCase(fetchBrands.rejected, (state, action) => {
         (state.loading = false), (state.error = action.payload);
