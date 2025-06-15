@@ -7,7 +7,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { nanoid } from "nanoid";
 import * as Yup from "yup";
 import css from "./CarDetails.module.css";
-import { Loader } from "../Loader/Loader.jsx";
+import Loader from "../Loader/Loader.jsx";
 import location from "../../assets/location.svg";
 import check from "../../assets/check-circle.svg";
 import calendar from "../../assets/calendar.svg";
