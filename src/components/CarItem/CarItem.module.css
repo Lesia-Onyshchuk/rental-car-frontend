@@ -98,3 +98,21 @@
   fill: #3470ff;
   stroke: #3470ff;
 }
+
+.carLiSec {
+  /* padding: 0 6px; */
+  border-right: 1px solid #8d929a;
+}
+
+.carDescr .carLiSec:last-child {
+  border-right: none;
+  padding-left: 6px;
+}
+
+.carDescr .carLiSec:not(:last-child) {
+  padding-right: 6px;
+}
+
+.carLiSec {
+  border-right: 1px solid #8d929a;
+}

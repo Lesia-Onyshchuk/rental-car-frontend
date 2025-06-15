@@ -72,6 +72,12 @@ export const Filters = () => {
     dispatch(clearCars());
     dispatch(setFilters(rentFilters));
     dispatch(fetchCars({ page: 1, filters: rentFilters }));
+    setRentFilters({
+      brand: "",
+      rentalPrice: "",
+      minMileage: "",
+      maxMileage: "",
+    });
   };
 
   return (
@@ -100,7 +106,11 @@ export const Filters = () => {
           onSelect={(value) =>
             setRentFilters((prev) => ({ ...prev, rentalPrice: value }))
           }
-          selected={rentFilters.rentalPrice}
+          selected={
+            rentFilters.rentalPrice
+              ? `To $${rentFilters.rentalPrice}`
+              : rentFilters.rentalPrice
+          }
           placeholder="Choose a price"
           className={css.select}
           id={priceId}

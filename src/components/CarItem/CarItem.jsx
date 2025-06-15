@@ -43,8 +43,8 @@ export const CarItem = ({ data }) => {
         <li className={css.carLi}>{data.rentalCompany}</li>
       </ul>
       <ul className={css.carDescr}>
-        <li className={css.carLi}>{data.type}</li>
-        <li className={css.carLi}>{data.mileage} km</li>
+        <li className={css.carLiSec}>{data.type}</li>
+        <li className={css.carLiSec}>{data.mileage} km</li>
       </ul>
       <Link to={`/catalog/${data.id}`} className={css.readMore}>
         Read more
